@@ -12,16 +12,6 @@ def best_first_graph_search(problem, f):
             # print(f'size of closed list:{len(closed_list)}')
         node = frontier.pop()  # here it adds a new link to node.solutions() list
         if problem.is_goal(node.state):
-
-            # TRY 1:
-            # path_list = node.solution()
-            # path_list.apppend(node.child_node(problem, node.action)) # TODO: should add the final link!!
-            # return path_list
-            # TRY 2:
-            # last_link_dict = node.expand(problem)
-            # path_list.append(last_link_dict[0].action)  # TODO: should add the final link!!
-            # return path_list
-
             return node.solution()
 
         closed_list.add(node.state)
