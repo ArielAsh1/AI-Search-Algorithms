@@ -1,6 +1,13 @@
+# name: Ariel Ashkenazy
+# ID: 208465085
+
+""" this file creates txt files with the outputs of UCS and A* runs.
+in addition, it can create the plot for the A* 100 runs, as requested in question 9 in the report"""
+
 from matplotlib import pyplot as plt
 
-from main import find_ucs_rout, find_astar_route, huristic_function, roads
+from SearchAlgorithms import roads, huristic_function
+from main import find_ucs_rout, find_astar_route
 from Helper import get_link_time
 import csv
 
@@ -66,4 +73,5 @@ def create_astar_plot():
 if __name__ == '__main__':
     run_from_problems(find_ucs_rout, 'UCSRuns')
     run_from_problems(find_astar_route, 'AStarRuns', add_estimated_time=True)
-    create_astar_plot()
+    # run this to create plot using the 100 astar runs data:
+    # create_astar_plot()

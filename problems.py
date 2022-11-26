@@ -1,6 +1,8 @@
-'''
-this file will create 100 random problems as requested in question 1.3
-'''
+# name: Ariel Ashkenazy
+# ID: 208465085
+
+
+""" this file creates 100 random problems as requested in question 1.3 """
 
 import pandas as pd
 import random
@@ -55,6 +57,8 @@ def create_random_problems_csv():
     s1_t1_df.to_csv('problems.csv', encoding='utf-8', header=False, index=False)
 
 
+# a function built to test this file is working properly - FOR MY OWN USE -
+# this is not an integrated part of the code and not necessary for the correct run on this code!
 def test():
     roads = load_map_from_csv()
     junc_list = roads.junctions()
@@ -68,6 +72,5 @@ def test():
 
 if __name__ == '__main__':
     create_random_problems_csv()
-    # test()
 
 

@@ -1,3 +1,6 @@
+# name: Ariel Ashkenazy
+# ID: 208465085
+
 from Node import Node
 from PriorityQueue import PriorityQueue
 
@@ -8,8 +11,6 @@ def best_first_graph_search(problem, f):
     frontier.append(node)
     closed_list = set()
     while frontier:
-       # if len(closed_list) % 1000 == 0:
-            # print(f'size of closed list:{len(closed_list)}')
         node = frontier.pop()  # here it adds a new link to node.solutions() list
         if problem.is_goal(node.state):
             return node.solution()

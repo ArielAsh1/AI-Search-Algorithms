@@ -1,12 +1,11 @@
-
-# This file should be runnable to print map_statistics using
-# $ python stats.py
+# name: Ariel Ashkenazy
+# ID: 208465085
 
 
 from collections import namedtuple
 
+from SearchAlgorithms import roads
 from ways.info import ROAD_TYPES
-from ways import load_map_from_csv
 import sys
 
 def map_statistics(roads):
@@ -55,7 +54,7 @@ def map_statistics(roads):
 
 
 def print_stats():
-    for k, v in map_statistics(load_map_from_csv()).items():
+    for k, v in map_statistics(roads).items():
         print('{}: {}'.format(k, v))
 
         
