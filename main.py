@@ -3,12 +3,11 @@ Parse input and run appropriate code.
 Don't use this file for the actual work; only minimal code should be here.
 We just parse input and call methods from other modules.
 '''
-
-
+from RoutingProblem import Routing_Problem
 from bestFirstGraphSearch import best_first_graph_search
-from ways.info import SPEED_RANGES
 from Helper import get_link_time
-from ways import load_map_from_csv, compute_distance, draw
+
+from ways import load_map_from_csv, compute_distance
 
 roads = load_map_from_csv()
 
@@ -22,49 +21,23 @@ def huristic_function(lat1, lon1, lat2, lon2):
     return compute_distance(lat1, lon1, lat2, lon2) / MAXIMAL_ROAD_SPEED
 
 
-class Routing_Problem:
-    def __init__(self, roads, s_start, s_goal):
-        self.s_start = s_start
-        self.goal = s_goal
-        self.roads = roads
-
-    def actions(self, s):
-        junc = self.roads[s]
-        return junc.links
-
-    def is_goal(self, s):
-        return s == self.goal
-
-    def succ(self, source, a):
-        return a.target
-
-    def step_cost(self, source, link):
-        # divide by 1000 cause speed in km/minute and distance is meters
-        return (link.distance / 1000) / SPEED_RANGES[link.highway_type][1]
-
-
 def find_ucs_rout(source, target):
     'call function to find path, and return list of indices'
-
     def f(node): return node.path_cost
-
     paths = best_first_graph_search(Routing_Problem(roads, source, target), f)
-    # converts each link to it's source index, and adds target at the end
+    # converts each link to its source index, and adds target at the end
     path_indices = list(map(lambda link: link.source, paths)) + [target]
     return path_indices
 
 
 def find_astar_route(source, target):
     'call function to find path, and return list of indices'
-
     def g(node):
         return node.path_cost
-
     paths = best_first_graph_search(
         Routing_Problem(roads, source, target),
         f=lambda n: g(n) + huristic_function(roads[n.state].lat, roads[n.state].lon,
                                              roads[target].lat, roads[target].lon))
-
     # converts each link to it's source index, and adds target at the end
     path_indices = list(map(lambda link: link.source, paths)) + [target]
     return path_indices
