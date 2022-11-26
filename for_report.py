@@ -104,31 +104,8 @@ def generate_drawings():
     draw.plot_path(roads, path)
     plt.show()
 
-# # for question 9?
-# def make_plot(solution):
-#     target = solution[-1].target
-#
-#     def h(source):
-#         curr = roads[source]
-#         goal = roads[target]
-#         return huristic_function(curr.lat, curr.lon, goal.lat, goal.lon)
-#
-#     # x represents what we thought would be the time cost, so we use the heuristic function for each source to goal
-#     # each element i holds the heuristic time cost value from node i to the goal
-#     # we also append 0 at the end, to represent the time cost from the goal to itself (for sure 0 so no need to compute)
-#     x = [h(link.source) for link in solution] + [0]
-#     y = [0]
-#     # list is reversed, so we can move from goal to source and add only one link time at a time
-#     for link in reversed(solution):
-#         # holds the time cost from the next node to the goal
-#         next_junc_time = y[0]
-#         y.insert(0, get_link_time(link) + next_junc_time)
-#
-#     plt.scatter(x, y)
-#     plt.show()
-
 
 if __name__ == '__main__':
     calculate_runtime()  # question 13
-    #generate_drawings()  # question 12
+    # generate_drawings()  # question 12
 
