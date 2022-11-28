@@ -83,7 +83,7 @@ def generate_drawings():
             draw.plot_path(roads, path)
             plt.show()
 
-# manual check, as instructed by Osnat the teacher assistant:
+# creates 10 selected plots manually ,as instructed by Osnat the teacher assistant:
 #     path = find_idastar_route(796843, 796851)  # 4
 #     draw.plot_path(roads, path)
 #     plt.show()
@@ -117,5 +117,5 @@ def generate_drawings():
 
 
 if __name__ == '__main__':
-    # calculate_runtime()  # question 13
-    generate_drawings()  # question 12
+    calculate_runtime()  # question 13
+    # generate_drawings()  # question 12

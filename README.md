@@ -4,7 +4,7 @@
 
 Add your source files here, and insert calls for the functions in them inside main.py.
 
-You can add directories for 3rd party libraries. Remember to declare `dir your_directory` in docs/dependencies.txt. # ????
+You can add directories for 3rd party libraries. Remember to declare `dir your_directory` in docs/dependencies.txt.
 
 
 __init__.py: A hint for the interpreter - ignore this file

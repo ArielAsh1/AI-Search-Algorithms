@@ -37,9 +37,6 @@ def run_from_problems(search_algo, filename, add_estimated_time=False):
             for link in res_links:
                 time += get_link_time(link)
 
-            if add_estimated_time:
-                time_list.append(time)  # builds a list to be used for make_plot() later
-
             res_junctions = [source] + [link.target for link in res_links]
             res_junctions_str = list(map(lambda x: str(x), res_junctions))  # converts each to a string
             # combine all strings to one big string, with space between each string:
@@ -51,27 +48,29 @@ def run_from_problems(search_algo, filename, add_estimated_time=False):
                 target_junc = roads[target]
                 estimated_time = huristic_function(source_junc.lat, source_junc.lon, target_junc.lat, target_junc.lon)
                 line += f' - {estimated_time}'
-                huristic_time_list.append(estimated_time)  # builds a list to be used for make_plot() later
+                # fills the two list to be used later for make_plot()
+                huristic_time_list.append(estimated_time)
+                time_list.append(time)
             res_list.append(line + '\n')
 
     with open(f'results/{filename}.txt', "w") as file:
         file.writelines(res_list)
 
 
-# question 9 in the report
+# for question 9 in the report
 # creates plot for 100 astar runs
 def create_astar_plot():
     plt.scatter(huristic_time_list, time_list)
     plt.xlabel("Heuristic time")
     plt.ylabel("Real time")
     plt.title("A* Plot")
-    plt.xlim(0, max(huristic_time_list) + 0.010)
-    plt.ylim(0, max(time_list) - 0.003)
+    plt.xlim(0, max(huristic_time_list) + 0.009)
+    plt.ylim(0, max(time_list))
     plt.show()
 
 
 if __name__ == '__main__':
     run_from_problems(find_ucs_rout, 'UCSRuns')
     run_from_problems(find_astar_route, 'AStarRuns', add_estimated_time=True)
-    # run this to create plot using the 100 astar runs data:
-    # create_astar_plot()
+    # run this to create a plot using the data from 100 astar runs:
+    create_astar_plot()
