@@ -2,7 +2,6 @@
 # ID: 208465085
 
 """ this file holds the implementation of the 3 search algorithms."""
-
 from Helper import get_link_time
 from bestFirstGraphSearch import best_first_graph_search
 from ways import load_map_from_csv, compute_distance

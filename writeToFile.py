@@ -6,9 +6,9 @@ in addition, it can create the plot for the A* 100 runs, as requested in questio
 
 from matplotlib import pyplot as plt
 
+from Helper import get_link_time
 from SearchAlgorithms import roads, huristic_function
 from main import find_ucs_rout, find_astar_route
-from Helper import get_link_time
 import csv
 
 
@@ -73,4 +73,4 @@ if __name__ == '__main__':
     run_from_problems(find_ucs_rout, 'UCSRuns')
     run_from_problems(find_astar_route, 'AStarRuns', add_estimated_time=True)
     # run this to create a plot using the data from 100 astar runs:
-    create_astar_plot()
+    # create_astar_plot()

@@ -4,6 +4,7 @@
 # example line:
 pip matplotlib
 pip pandas
+pip IPython
 dir results
 
 #another example:
